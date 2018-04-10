@@ -14,23 +14,19 @@ class Tree:
 			self.root.relatives.append(Node(node))
 
 	def search(self,node,tree):
-		n = tree
 		r = False
-		print(n.data, [f.data for f in n.relatives])
 
-		if n.data == node:
+		if tree.data == node:
 			r = True
 			return(r)
 
-		while n.relatives:
-
-			if node in n.relatives:
+		while tree.relatives:
+			if node in [f.data for f in tree.relatives]:
 				r = True
 				return(r)
 
-			for f in n.relatives:
-				n = f
-				r = self.search(node,n)
+			for f in tree.relatives:
+				r = self.search(node,f)
 				return(r)
 
 		return(r)
