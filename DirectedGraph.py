@@ -16,13 +16,15 @@ class DirectedGraph:
 
 	def search(self,data,node):
 
+		node.seen = True
+
 		if node.data == data:
 			return(True)
 
 		if data in [f.data for f in node.relatives]:
 			return(True)
 		else:
-			for f in node.relatives:
+			for f in [f for f in node.relatives if not f.seen]:
 				return(self.search(data,f))
 
 		return(False)

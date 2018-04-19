@@ -20,7 +20,14 @@ dg = DirectedGraph.DirectedGraph("okay")
 dg.add("this")
 dg.add("is")
 dg.add("sparta")
+# create infinite loop, mhm points to other three
 dg.add("mhm",[dg.first.relatives])
+# other three point to mhm
+dg.first.relatives[0].relatives.append(dg.first.relatives[-1])
+dg.first.relatives[1].relatives.append(dg.first.relatives[-1])
+dg.first.relatives[2].relatives.append(dg.first.relatives[-1])
+dg.first.relatives[3].relatives.append(dg.first.relatives[-1])
+
 print(dg.search("mhm",dg.first)) # true
 print(dg.search("this",dg.first)) # true
 print(dg.search("is",dg.first)) # true
