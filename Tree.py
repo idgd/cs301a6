@@ -24,3 +24,10 @@ class Tree:
 				return(self.search(node,f))
 
 		return(False)
+
+# running time of search:
+# best case is constant
+# worst case is n, where n is the number of nodes in the tree
+# in all true cases, the runtime is the number of relatives the node has
+# in all maybe cases, it simply does this linear check over each relative
+# in the false case, it has checked every node once, thus, n
